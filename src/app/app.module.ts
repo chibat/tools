@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { CsvFormatComponent } from './csv-format/csv-format.component';
+import { TopComponent } from './top/top.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CsvFormatComponent
+    CsvFormatComponent,
+    TopComponent
   ],
   imports: [
     BrowserModule,
