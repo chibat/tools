@@ -1,7 +1,7 @@
 <h2>CSV Format</h2>
 <div>
   <mat-form-field class="example-full-width" style="width: 100%">
-    <textarea matInput placeholder="CSV" rows="10" style="width: 100%"></textarea>
+	  <textarea matInput placeholder="CSV" rows="10" style="width: 100%">{{csv}}</textarea>
   </mat-form-field>
-  <button mat-raised-button>Format</button>
+  <button mat-raised-button (click)="format()">Format</button>
 </div>

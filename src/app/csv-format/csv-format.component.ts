@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CsvFormatComponent implements OnInit {
 
+  csv = 'aaa,bbb,   ccc,';
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  format() {
+    this.csv = this.csv.replace(/, */g, ', ');
+  }
 }
