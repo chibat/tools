@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatAutocompleteModule, MatDialogModule, MatTooltipModule, MatMenuModule, MatRadioModule, MatSelectModule, MatButtonModule,
   MatInputModule, MatSnackBarModule, MatIconModule, MatCardModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule, MatProgressBarModule,
@@ -22,6 +23,8 @@ import { TopComponent } from './top/top.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatDialogModule,

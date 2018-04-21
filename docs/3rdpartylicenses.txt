@@ -146,6 +146,10 @@ THE SOFTWARE.
 MIT
 MIT
 
+@angular/forms@5.2.9
+MIT
+MIT
+
 @angular/material@5.2.4
 MIT
 The MIT License
@@ -199,10 +203,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 @angular/animations@5.2.10
-MIT
-MIT
-
-@angular/forms@5.2.9
 MIT
 MIT
 
