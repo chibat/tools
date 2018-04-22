@@ -24,10 +24,10 @@ export class CsvFormatComponent implements OnInit {
   format() {
     const lines = this.csv.value.split(/\r\n|\r|\n/);
     let formatted = '';
-    let headerIndexes = [];
+    const headerIndexes = [];
     for (let rowIndex = 0; rowIndex < lines.length; rowIndex++) {
       if (rowIndex == 0) {
-        let line = lines[rowIndex].replace(/, */g, ', ').trim();
+        const line = lines[rowIndex].replace(/, */g, ', ').trim();
         for (let fromIndex = 0; ; fromIndex++) {
           fromIndex = line.indexOf(', ', fromIndex);
           if (fromIndex === -1) {
@@ -35,21 +35,22 @@ export class CsvFormatComponent implements OnInit {
           }
           headerIndexes.push(fromIndex);
         }
-        console.info(headerIndexes);
         formatted += line;
       } else {
         formatted += "\n";
         let line = '';
-        let columns = lines[rowIndex].split(',');
+        const columns = lines[rowIndex].split(',');
         for (let columnIndex = 0; columnIndex < columns.length; columnIndex++) {
           line += columns[columnIndex].trim();
           if (columnIndex != columns.length - 1) {
             line += ', '
           }
-          let spaceSize = headerIndexes[columnIndex] - line.length + 2;
-          for (let i = 0; i < spaceSize; i++) {
-            line += ' ';
-          }
+          if (headerIndexes.length > columnIndex) {
+            const spaceSize = headerIndexes[columnIndex] - line.length + 2;
+            for (let i = 0; i < spaceSize; i++) {
+              line += ' ';
+            }
+	  }
         }
         formatted += line.trim();
       }
