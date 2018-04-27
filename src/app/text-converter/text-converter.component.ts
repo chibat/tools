@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text-converter',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TextConverterComponent implements OnInit {
 
+  text = new FormControl(
+`aaa_bbb_ccc
+AAA_BBB_CCC
+`
+  );
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  convert() {
+  }
 }
