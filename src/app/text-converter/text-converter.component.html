@@ -1,3 +1,8 @@
-<p>
-  text-converter works!
-</p>
+<h2>Text Converter</h2>
+<div>
+  <mat-form-field class="example-full-width" style="width: 100%">
+    <textarea matInput name="text" [formControl]="text" placeholder="text" rows="10" style="width: 100%; font-family: Consolas, 'Courier New', Courier, Monaco, monospace;"></textarea>
+  </mat-form-field>
+  <button mat-raised-button (click)="convert()">Format</button>
+</div>
+
