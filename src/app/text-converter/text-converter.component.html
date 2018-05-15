@@ -1,5 +1,12 @@
 <h2>Text Converter</h2>
 <div>
+  <mat-form-field>
+    <mat-select placeholder="Action" [formControl]="actionControl" (change)="changeAction()">
+      <mat-option *ngFor="let action of actions" [value]="action.id">
+        {{ action.name }}
+    </mat-option>
+    </mat-select>
+  </mat-form-field>
   <mat-form-field class="example-full-width" style="width: 100%">
     <textarea matInput name="text" [formControl]="text" placeholder="text" rows="10" style="width: 100%; font-family: Consolas, 'Courier New', Courier, Monaco, monospace;"></textarea>
   </mat-form-field>

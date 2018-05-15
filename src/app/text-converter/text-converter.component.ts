@@ -8,42 +8,50 @@ import { FormControl } from '@angular/forms';
 })
 export class TextConverterComponent implements OnInit {
 
+  actionControl = new FormControl(0);
   text = new FormControl();
 
-  readonly snakeExample =
+  actions = [
+    {
+      id: 0, 
+      name: 'snake to camel',
+      convert: (text: string) => 
+        text.toLowerCase().replace(/_./g,
+          (s) => s.charAt(1).toUpperCase()
+	),
+      example:
 `aaa_bbb_ccc
 AAA_BBB_CCC
-`;
-
-  readonly camelExample = 
+`
+    },
+    {
+      id: 1,
+      name: 'camel to snake',
+      convert: (text: string) => 
+        text.replace(/([A-Z])/g,
+          (s, p1, offset) => '_' + s.charAt(0)
+        ).toLowerCase(),
+      example:
 `aaaBbbCcc
 aaaBbbCcc
-`;
+`
+    }
+  ];
 
   constructor() {
-    this.text.setValue(this.camelExample);
+    const action = this.actions[0];
+    this.actionControl.setValue(action.id);
+    this.text.setValue(action.example);
   }
 
   ngOnInit() {
   }
 
+  changeAction() {
+    this.text.setValue(this.actions[this.actionControl.value].example);
+  }
+
   convert() {
-    this.text.setValue(this.camelToSnake(this.text.value));
-  }
-
-  private snakeToCamel(text: string){
-    return text.toLowerCase().replace(/_./g,
-      function(s) {
-        return s.charAt(1).toUpperCase();
-      }
-    );
-  }
-
-  private camelToSnake(text: string){
-    return text.replace(/([A-Z])/g,
-      function(s, p1, offset) {
-        return '_' + s.charAt(0);
-      }
-    ).toLowerCase();
+    this.text.setValue(this.actions[this.actionControl.value].convert(this.text.value));
   }
 }
