@@ -3,6 +3,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
-  background-color: #eeeeee;
+  font-family: 'メイリオ',Meiryo,'ＭＳ Ｐゴシック','ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro',sans-serif;
+  background-color: #fafafa;
+  margin: 0;
 }
-
