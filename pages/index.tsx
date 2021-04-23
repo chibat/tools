@@ -86,6 +86,7 @@ export default function Home() {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
         />
+        <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
       </head>
       <header>
         <h1>Tool</h1>
