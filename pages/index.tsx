@@ -46,8 +46,6 @@ export default function Home() {
     }
   }
 
-  decodeURI("");
-
   const [valueUrlEncode, setValueUrlEncode] = useState("");
   const [resultUrlEncode, setResultUrlEncode] = useState("");
 
