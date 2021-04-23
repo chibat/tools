@@ -1,9 +1,8 @@
-import React, { useState} from 'react'
+import React, { useState } from "react";
 
 const errorMessage = "Contains characters that cannot be converted.";
 
 export default function Home() {
-  console.log("hoge")
 
   const [valueBtoa, setValueBtoa] = useState("");
   const [resultBtoa, setResultBtoa] = useState("");
@@ -14,10 +13,10 @@ export default function Home() {
   }
 
   function onKeyPressBtoa(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       setResultBtoa("");
       setErrorBtoa("");
-      e.preventDefault()
+      e.preventDefault();
       try {
         setResultBtoa(btoa(valueBtoa));
       } catch {
@@ -35,10 +34,10 @@ export default function Home() {
   }
 
   function onKeyPressAtob(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       setResultAtob("");
       setErrorAtob("");
-      e.preventDefault()
+      e.preventDefault();
       try {
         setResultAtob(atob(valueAtob));
       } catch (e) {
@@ -57,9 +56,9 @@ export default function Home() {
   }
 
   function onKeyPressUrlEncode(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       setResultUrlEncode("");
-      e.preventDefault()
+      e.preventDefault();
       setResultUrlEncode(encodeURI(valueUrlEncode));
     }
   }
@@ -72,39 +71,65 @@ export default function Home() {
   }
 
   function onKeyPressUrlDecode(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key == 'Enter') {
+    if (e.key == "Enter") {
       setResultUrlDecode("");
-      e.preventDefault()
+      e.preventDefault();
       setResultUrlDecode(decodeURI(valueUrlDecode));
     }
   }
-
 
   return (
     <div>
       <head>
         <title>Tool</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
+        />
       </head>
       <header>
         <h1>Tool</h1>
         <nav>
-            <a href="https://chibat.github.io/tool/">Home</a> /
-            <a href="https://github.com/chibat/tool" target="_blank"> GitHub</a> 
+          <a href="https://chibat.github.io/tool/">Home</a> /
+          <a href="https://github.com/chibat/tool" target="_blank">GitHub</a>
         </nav>
       </header>
       <h1>Base64</h1>
       <h2>encode: btoa</h2>
-      <input type="text" value={valueBtoa} onChange={onChangeBtoa} onKeyPress={onKeyPressBtoa} /> {resultBtoa}
-      <span style={{color: "red"}}>{errorBtoa}</span>
+      <input
+        type="text"
+        value={valueBtoa}
+        onChange={onChangeBtoa}
+        onKeyPress={onKeyPressBtoa}
+      />{" "}
+      {resultBtoa}
+      <span style={{ color: "red" }}>{errorBtoa}</span>
       <h2>decode: atob</h2>
-      <input type="text" value={valueAtob} onChange={onChangeAtob} onKeyPress={onKeyPressAtob} /> {resultAtob}
-      <span style={{color: "red"}}>{errorAtob}</span>
+      <input
+        type="text"
+        value={valueAtob}
+        onChange={onChangeAtob}
+        onKeyPress={onKeyPressAtob}
+      />{" "}
+      {resultAtob}
+      <span style={{ color: "red" }}>{errorAtob}</span>
       <h1>URL</h1>
       <h2>encode: encodeURI</h2>
-      <input type="text" value={valueUrlEncode} onChange={onChangeUrlEncode} onKeyPress={onKeyPressUrlEncode} /> {resultUrlEncode}
+      <input
+        type="text"
+        value={valueUrlEncode}
+        onChange={onChangeUrlEncode}
+        onKeyPress={onKeyPressUrlEncode}
+      />{" "}
+      {resultUrlEncode}
       <h2>decode: dencodeURI</h2>
-      <input type="text" value={valueUrlDecode} onChange={onChangeUrlDecode} onKeyPress={onKeyPressUrlDecode} /> {resultUrlDecode}
+      <input
+        type="text"
+        value={valueUrlDecode}
+        onChange={onChangeUrlDecode}
+        onKeyPress={onKeyPressUrlDecode}
+      />{" "}
+      {resultUrlDecode}
     </div>
-  )
+  );
 }
