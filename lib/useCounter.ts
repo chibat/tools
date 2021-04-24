@@ -1,19 +1,24 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from "react";
 
-export default function useCounter(): [number, boolean, () => void, () => void] {
-  const [count, setCount] = useState(0)
-  const [isSyncing, setIsSyncing] = useState(true)
+export default function useCounter(): [
+  number,
+  boolean,
+  () => void,
+  () => void,
+] {
+  const [count, setCount] = useState(0);
+  const [isSyncing, setIsSyncing] = useState(true);
   const increase = useCallback(() => {
-    setCount((n: number) => n + 1)
+    setCount((n: number) => n + 1);
     // fetch('/api/counter/increase').catch(e => console.error(e))
-  }, [])
+  }, []);
   const decrease = useCallback(() => {
-    setCount((n: number) => n - 1)
+    setCount((n: number) => n - 1);
     // fetch('/api/counter/decrease').catch(e => console.error(e))
-  }, [])
+  }, []);
 
   useEffect(() => {
-    setIsSyncing(false)
+    setIsSyncing(false);
     // fetch('/api/counter').then(resp => resp.json().catch(() => ({})))
     //   .then(({ count }) => {
     //     if (typeof count === 'number' && !Number.isNaN(count)) {
@@ -24,7 +29,7 @@ export default function useCounter(): [number, boolean, () => void, () => void] 
     //   .finally(() => {
     //     setIsSyncing(false)
     //   })
-  }, [])
+  }, []);
 
-  return [count, isSyncing, increase, decrease]
+  return [count, isSyncing, increase, decrease];
 }

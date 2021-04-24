@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { PasswordGenerator } from "../components/password_generator.tsx";
 
 const errorMessage = "Contains characters that cannot be converted.";
 
 export default function Home() {
-
   const [valueBtoa, setValueBtoa] = useState("");
   const [resultBtoa, setResultBtoa] = useState("");
   const [errorBtoa, setErrorBtoa] = useState("");
@@ -129,6 +129,7 @@ export default function Home() {
         onKeyPress={onKeyPressUrlDecode}
       />{" "}
       {resultUrlDecode}
+      <PasswordGenerator></PasswordGenerator>
     </div>
   );
 }
