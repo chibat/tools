@@ -14,7 +14,7 @@ async function build() {
     "--allow-net=deno.land,esm.sh,cdn.esm.sh,registry.npmjs.org",
     "--allow-read=.," + Deno.execPath() + "," + await denoDir(),
     "--allow-write",
-    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,ESBUILD_BINARY_PATH,XDG_CACHE_HOME,HOME",
+    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,ESBUILD_BINARY_PATH,XDG_CACHE_HOME,HOME,LOCALAPPDATA",
     alephCliPath(),
     "build",
   ]);

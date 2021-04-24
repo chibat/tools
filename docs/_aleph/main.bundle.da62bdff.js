@@ -1,0 +1,1 @@
+__ALEPH.bundled={"/pages/index":"/pages/index.bundle.708b5b71.js"};__ALEPH.basePath = "/tool";__ALEPH.pack["https://deno.land/x/aleph@v0.3.0-alpha.31/framework/react/bootstrap.ts"].default({"basePath":"/tool","defaultLocale":"en","locales":[],"routes":[{"path":"/","module":{"url":"/pages/index.tsx"}}],"rewrites":{},"sharedModules":[{"url":"/app.tsx"}],"renderMode":"ssr"});
