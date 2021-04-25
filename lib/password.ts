@@ -1,5 +1,5 @@
 export const defaultCharacters =
-  "~!@#$%^&*_+-=;,./_+|:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  "~!@#%^&*_+-=;,./_+|:abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 // const allCharacters = "`~!@#$%^&*()_+-=[]\\;',./_+{}|:\"<>?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 export function generatePassword(length: number, characters: string): string {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import Header from "../components/Header.tsx";
 import { defaultCharacters, generatePassword } from "../lib/password.ts";
 
-export function PasswordGenerator() {
+export default function Home() {
   const [length, setLength] = useState(10);
   const [characters, setCharacters] = useState(defaultCharacters);
   const [result, setResult] = useState("");
@@ -14,6 +15,7 @@ export function PasswordGenerator() {
 
   return (
     <div>
+      <Header />
       <h1>Password Generator</h1>
       <div>
         password length{" "}
