@@ -13,7 +13,7 @@ export default function Home() {
     if (e.key == "Enter") {
       setResultUrlEncode("");
       e.preventDefault();
-      setResultUrlEncode(encodeURI(valueUrlEncode));
+      setResultUrlEncode(encodeURIComponent(valueUrlEncode)); // TODO encodeURI version ?
     }
   }
 
@@ -28,30 +28,34 @@ export default function Home() {
     if (e.key == "Enter") {
       setResultUrlDecode("");
       e.preventDefault();
-      setResultUrlDecode(decodeURI(valueUrlDecode));
+      setResultUrlDecode(decodeURIComponent(valueUrlDecode)); // TODO decodeURI version ?
     }
   }
+
+  const readonlyStyle = { width: "100%", backgroundColor: "white" };
 
   return (
     <div>
       <Header />
       <h1>URL</h1>
-      <h2>encode: encodeURI</h2>
+      <h2>encode: encodeURIComponent</h2>
       <input
         type="text"
         value={valueUrlEncode}
         onChange={onChangeUrlEncode}
         onKeyPress={onKeyPressUrlEncode}
+        style={{ width: "100%" }}
       />{" "}
-      {resultUrlEncode}
-      <h2>decode: dencodeURI</h2>
+      <input readOnly value={resultUrlEncode} style={readonlyStyle} />
+      <h2>decode: dencodeURIComponent</h2>
       <input
         type="text"
         value={valueUrlDecode}
         onChange={onChangeUrlDecode}
         onKeyPress={onKeyPressUrlDecode}
+        style={{ width: "100%" }}
       />{" "}
-      {resultUrlDecode}
+      <input readOnly value={resultUrlDecode} style={readonlyStyle} />
     </div>
   );
 }

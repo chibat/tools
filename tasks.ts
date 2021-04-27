@@ -14,7 +14,7 @@ async function build() {
     "--allow-net=deno.land,esm.sh,cdn.esm.sh,registry.npmjs.org",
     "--allow-read=.," + Deno.execPath() + "," + await denoDir(),
     "--allow-write",
-    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,ESBUILD_BINARY_PATH,XDG_CACHE_HOME,HOME,LOCALAPPDATA",
+    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,ESBUILD_BINARY_PATH,XDG_CACHE_HOME,HOME,LOCALAPPDATA,DENO_TESTING",
     alephCliPath(),
     "build",
   ]);
@@ -33,7 +33,7 @@ async function dev() {
     "--allow-net=deno.land,esm.sh,cdn.esm.sh,:8080",
     "--allow-read=.," + Deno.execPath() + "," + await denoDir(),
     "--allow-write=.aleph," + await denoDir(),
-    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK",
+    "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,DENO_TESTING",
     alephCliPath(),
     "dev",
   ]);

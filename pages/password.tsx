@@ -13,6 +13,8 @@ export default function Home() {
     }
   }
 
+  const readonlyStyle = { width: "100%", backgroundColor: "white" };
+
   return (
     <div>
       <Header />
@@ -32,9 +34,13 @@ export default function Home() {
           value={characters}
           onChange={(e: React.ChangeEvent<any>) =>
             setCharacters(e.target.value)}
+          style={{ width: "50%" }}
         />
       </div>
-      <button onClick={onClick}>generate</button> <span>{result}</span>
+      <button onClick={onClick}>generate</button>
+      <div>
+        <input readOnly value={result} style={readonlyStyle} />
+      </div>
     </div>
   );
 }

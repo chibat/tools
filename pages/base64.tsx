@@ -46,6 +46,8 @@ export default function Home() {
     }
   }
 
+  const readonlyStyle = { width: "100%", backgroundColor: "white" };
+
   return (
     <div>
       <Header />
@@ -56,8 +58,9 @@ export default function Home() {
         value={valueBtoa}
         onChange={onChangeBtoa}
         onKeyPress={onKeyPressBtoa}
+        style={{ width: "100%" }}
       />{" "}
-      {resultBtoa}
+      <input readOnly value={resultBtoa} style={readonlyStyle} />
       <span style={{ color: "red" }}>{errorBtoa}</span>
       <h2>decode: atob</h2>
       <input
@@ -65,8 +68,9 @@ export default function Home() {
         value={valueAtob}
         onChange={onChangeAtob}
         onKeyPress={onKeyPressAtob}
+        style={{ width: "100%" }}
       />{" "}
-      {resultAtob}
+      <input readOnly value={resultAtob} style={readonlyStyle} />
       <span style={{ color: "red" }}>{errorAtob}</span>
     </div>
   );
