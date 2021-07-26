@@ -11,7 +11,7 @@ const TASKS = [build, dev, start, deploy];
 async function build() {
   rm(".aleph");
   await denoRun([
-    "--allow-net=deno.land,esm.sh,cdn.esm.sh,registry.npmjs.org",
+    "--allow-net=deno.land,esm.sh,cdn.esm.sh,registry.npmjs.org,cdn.jsdelivr.net",
     "--allow-read=.," + Deno.execPath() + "," + await denoDir(),
     "--allow-write",
     "--allow-env=ALEPH_DEV,ALEPH_DEV_PORT,ALEPH_VERSION,ALEPH_BUILD_MODE,ALEPH_FRAMEWORK,ESBUILD_BINARY_PATH,XDG_CACHE_HOME,HOME,LOCALAPPDATA,DENO_TESTING",

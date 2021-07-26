@@ -15,6 +15,9 @@ export default function Home() {
         <li>
           <a href="/tool/password">Password Generator</a>
         </li>
+        <li>
+          <a href="https://chibat.github.io/monaco-editor-samples/browser-amd-diff-editor/">Diff</a>
+        </li>
       </ul>
     </div>
   );
