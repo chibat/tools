@@ -1,0 +1,29 @@
+<html>
+
+<head>
+  <title>URL - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>URL</h1>
+  <h2>encode: encodeURIComponent</h2>
+  <input id="valueUrlEncode" type="text" onchange="onChangeUrlEncode()" style="width: 100%" />
+  <input id="resultUrlEncode" readOnly style="border: none;width: 100%" />
+  <h2>decode: dencodeURIComponent</h2>
+  <input id="valueUrlDecode" type="text" onchange="onChangeUrlDecode()" style="width: 100%" />
+  <input id="resultUrlDecode" readOnly style="border: none;width: 100%" />
+  <script type="text/javascript">
+    function onChangeUrlEncode() {
+      const input = document.getElementById("valueUrlEncode").value;
+      document.getElementById("resultUrlEncode").value = encodeURIComponent(input);
+    }
+    function onChangeUrlDecode() {
+      const input = document.getElementById("valueUrlDecode").value;
+      document.getElementById("resultUrlDecode").value = decodeURIComponent(input);
+    }
+  </script>
+</body>
+
+</html>
