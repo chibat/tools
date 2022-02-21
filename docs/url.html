@@ -9,12 +9,12 @@
 <body>
   <h1>URL</h1>
   <h2>encode: encodeURIComponent</h2>
-  <input id="valueUrlEncode" type="text" onchange="onChangeUrlEncode()" style="width: 100%" />
-  <input id="resultUrlEncode" readOnly style="border: none;width: 100%" />
+  <input id="valueUrlEncode" type="text" onchange="onChangeUrlEncode()" autofocus style="width: 100%" />
+  <input id="resultUrlEncode" readonly style="border: none;width: 100%" />
   <h2>decode: dencodeURIComponent</h2>
   <input id="valueUrlDecode" type="text" onchange="onChangeUrlDecode()" style="width: 100%" />
-  <input id="resultUrlDecode" readOnly style="border: none;width: 100%" />
-  <script type="text/javascript">
+  <input id="resultUrlDecode" readonly style="border: none;width: 100%" />
+  <script type="text/javascript" defer>
     function onChangeUrlEncode() {
       const input = document.getElementById("valueUrlEncode").value;
       document.getElementById("resultUrlEncode").value = encodeURIComponent(input);

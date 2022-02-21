@@ -9,14 +9,15 @@
 <body>
   <h1>Base64</h1>
   <h2>encode: btoa</h2>
-  <input id="btoa_input" type="text" onchange="onChangeBtoa()" style="width: 100%" />
+  <input id="btoa_input" type="text" onchange="onChangeBtoa()" autofocus style="width: 100%" />
   <input id="btoa_result" readonly style="width: 100%; border: none;" />
   <span id="btoa_message" style="color: red"></span>
   <h2>decode: atob</h2>
   <input id="atob_input" type="text" onchange="onChangeAtob()" style="width: 100%" />
   <input id="atob_result" readonly style="width: 100%; border: none;" />
   <span id="atob_message" style="color: red"></span>
-  <script type="text/javascript">
+
+  <script type="text/javascript" defer>
     const ERROR_MESSAGE = "Contains characters that cannot be converted.";
     function onChangeBtoa() {
       const message = document.getElementById("btoa_message");

@@ -1,0 +1,71 @@
+<html>
+
+<head>
+  <title>Stop Watch - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>Stop Watch</h1>
+  <div id="timer" style="font-size: 150px;">00:00:000</div>
+  <button id="start" autofocus style="width: 40%; height: 80px;">start</button>
+  <button id="reset" style="width: 40%; height: 80px;">reset</button>
+
+  <script type="text/javascript" defer>
+    'use strict';
+
+    const timer = document.getElementById('timer');
+    const start = document.getElementById('start');
+    const reset = document.getElementById('reset');
+
+    let startTime;
+    let elapsedTime = 0;
+    let timerId;
+    let timeToadd = 0;
+    let starrted = false;
+
+    function updateTimetText() {
+      let m = Math.floor(elapsedTime / 60000);
+      let s = Math.floor(elapsedTime % 60000 / 1000);
+      let ms = elapsedTime % 1000;
+      m = ('0' + m).slice(-2);
+      s = ('0' + s).slice(-2);
+      ms = ('0' + ms).slice(-3);
+      timer.textContent = m + ':' + s + ':' + ms;
+    }
+
+    function countUp() {
+      timerId = setTimeout(function () {
+        elapsedTime = Date.now() - startTime + timeToadd;
+        updateTimetText()
+        countUp();
+      }, 10);
+    }
+
+    start.addEventListener('click', function () {
+      if (starrted) {
+        // stop
+        clearTimeout(timerId);
+        timeToadd += Date.now() - startTime;
+        start.textContent = 'start';
+      } else {
+        // start
+        startTime = Date.now();
+        countUp();
+        start.textContent = 'stop';
+      }
+      starrted = !starrted;
+    });
+
+    reset.addEventListener('click', function () {
+      elapsedTime = 0;
+      timeToadd = 0;
+      updateTimetText();
+      timer.textContent = '00:00:000';
+    });
+
+  </script>
+</body>
+
+</html>
