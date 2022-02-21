@@ -1,5 +1,5 @@
 
-# Tool
+# Tools
 
 https://chibat.github.io/tool/
 
