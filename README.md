@@ -1,7 +1,7 @@
 
 # Tools
 
-https://chibat.github.io/tool/
+https://chibat.github.io/tools/
 
 ## development
 
