@@ -10,7 +10,7 @@
   <h1>Stop Watch</h1>
   <div id="timer" style="font-size: 150px;">00:00:000</div>
   <button id="start" autofocus style="width: 40%; height: 80px;">start</button>
-  <button id="reset" style="width: 40%; height: 80px;">reset</button>
+  <button id="reset" disabled style="width: 40%; height: 80px;">reset</button>
 
   <script type="text/javascript" defer>
     'use strict';
@@ -49,11 +49,13 @@
         clearTimeout(timerId);
         timeToadd += Date.now() - startTime;
         start.textContent = 'start';
+        reset.disabled = false;
       } else {
         // start
         startTime = Date.now();
         countUp();
         start.textContent = 'stop';
+        reset.disabled = true;
       }
       starrted = !starrted;
     });
