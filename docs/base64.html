@@ -9,40 +9,43 @@
 <body>
   <h1>Base64</h1>
   <h2>encode: btoa</h2>
-  <input id="btoa_input" type="text" onchange="onChangeBtoa()" autofocus style="width: 100%" />
+  <input id="btoa_input" type="text" autofocus style="width: 100%" />
   <input id="btoa_result" readonly style="width: 100%; border: none;" />
   <span id="btoa_message" style="color: red"></span>
   <h2>decode: atob</h2>
-  <input id="atob_input" type="text" onchange="onChangeAtob()" style="width: 100%" />
+  <input id="atob_input" type="text" style="width: 100%" />
   <input id="atob_result" readonly style="width: 100%; border: none;" />
   <span id="atob_message" style="color: red"></span>
 
   <script type="text/javascript" defer>
+    'use strict';
     const ERROR_MESSAGE = "Contains characters that cannot be converted.";
-    function onChangeBtoa() {
-      const message = document.getElementById("btoa_message");
-      const resutl = document.getElementById("btoa_result");
-      message.textContent = "";
-      resutl.value = "";
-      const input = document.getElementById("btoa_input").value;
+    const btoaInput = document.getElementById("btoa_input")
+    const btoaMessage = document.getElementById("btoa_message");
+    const btoaResult = document.getElementById("btoa_result");
+    btoaInput.addEventListener('change', () => {
+      btoaMessage.textContent = "";
+      btoaResult.value = "";
+      const input = btoaInput.value;
       try {
-        resutl.value = btoa(input);
+        btoaResult.value = btoa(input);
       } catch {
-        message.textContent = ERROR_MESSAGE;
+        btoaMessage.textContent = ERROR_MESSAGE;
       }
-    }
-    function onChangeAtob() {
-      const message = document.getElementById("atob_message");
-      const resutl = document.getElementById("atob_result");
-      message.textContent = "";
-      resutl.value = "";
-      const input = document.getElementById("atob_input").value;
+    });
+    const atobInput = document.getElementById("atob_input");
+    const atobMessage = document.getElementById("atob_message");
+    const atobResult = document.getElementById("atob_result");
+    atobInput.addEventListener('change', () => {
+      atobMessage.textContent = "";
+      atobResult.value = "";
+      const input = atobInput.value;
       try {
-        resutl.value = atob(input);
+        atobResult.value = atob(input);
       } catch {
-        message.textContent = ERROR_MESSAGE;
+        atobMessage.textContent = ERROR_MESSAGE;
       }
-    }
+    });
   </script>
 </body>
 

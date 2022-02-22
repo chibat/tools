@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>UUID - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>Unix Time: date.getTime()</h1>
+  <input id="unixTime" type="number" autofocus maxlength="15" style="width: 100%;" />
+  <h2>ISO: date.toISOString()</h2>
+  <span id="iso"></span>
+  <h2>Locale: date.toLocaleString()</h2>
+  <span id="locale"></span>
+  <h2>UTC: date.toUTCString()</h2>
+  <span id="utc"></span>
+
+  <script type="text/javascript" defer>
+    'use strict';
+    function display(date) {
+      document.getElementById('iso').textContent = date.toISOString();
+      document.getElementById('locale').textContent = date.toLocaleString();
+      document.getElementById('utc').textContent = date.toUTCString();
+    }
+    const unixTime = document.getElementById('unixTime');
+    const now = new Date();
+    unixTime.value = now.getTime();
+    display(now);
+    unixTime.addEventListener('change', () => {
+      display(new Date(new Number(unixTime.value)));
+    });
+  </script>
+</body>
+
+</html>

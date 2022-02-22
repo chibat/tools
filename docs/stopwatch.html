@@ -36,14 +36,14 @@
     }
 
     function countUp() {
-      timerId = setTimeout(function () {
+      timerId = setTimeout(() => {
         elapsedTime = Date.now() - startTime + timeToadd;
         updateTimetText()
         countUp();
       }, 10);
     }
 
-    start.addEventListener('click', function () {
+    start.addEventListener('click', () => {
       if (starrted) {
         // stop
         clearTimeout(timerId);
@@ -60,7 +60,7 @@
       starrted = !starrted;
     });
 
-    reset.addEventListener('click', function () {
+    reset.addEventListener('click', () => {
       elapsedTime = 0;
       timeToadd = 0;
       updateTimetText();

@@ -1,0 +1,22 @@
+<html>
+
+<head>
+  <title>UUID - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>UUID</h1>
+  crypto.randomUUID()
+  <input id="uuid" type="text" readonly autofocus style="width: 100%;" />
+
+  <script type="text/javascript" defer>
+    'use strict';
+    const uuid = document.getElementById('uuid');
+    uuid.value = crypto.randomUUID();
+    uuid.select();
+  </script>
+</body>
+
+</html>
