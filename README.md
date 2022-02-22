@@ -6,7 +6,7 @@ https://chibat.github.io/tools/
 ## development
 
 ```
-$ ./tasks.ts dev
+$ ./tasks.ts start
 ```
 
 ## deploy
