@@ -9,15 +9,17 @@
 <body>
   <h1>Stop Watch</h1>
   <div id="timer" style="font-size: 150px;">00:00:000</div>
-  <button id="start" autofocus style="width: 40%; height: 80px;">start</button>
-  <button id="reset" disabled style="width: 40%; height: 80px;">reset</button>
+  <button id="start" autofocus style="width: 40%; height: 80px;">start(Space)</button>
+  <button id="reset" disabled style="width: 40%; height: 80px;">reset(Esc)</button>
 
   <script type="text/javascript" defer>
     'use strict';
 
+    const START_BUTTON_LABEL = 'Start(Space)';
     const timer = document.getElementById('timer');
     const start = document.getElementById('start');
     const reset = document.getElementById('reset');
+    start.textContent = START_BUTTON_LABEL;
 
     let startTime;
     let elapsedTime = 0;
@@ -48,13 +50,13 @@
         // stop
         clearTimeout(timerId);
         timeToadd += Date.now() - startTime;
-        start.textContent = 'start';
+        start.textContent = START_BUTTON_LABEL;
         reset.disabled = false;
       } else {
         // start
         startTime = Date.now();
         countUp();
-        start.textContent = 'stop';
+        start.textContent = 'Stop(Space)';
         reset.disabled = true;
       }
       starrted = !starrted;
@@ -65,6 +67,14 @@
       timeToadd = 0;
       updateTimetText();
       timer.textContent = '00:00:000';
+    });
+
+    window.addEventListener('keyup', (e) => {
+      if (e.key === ' ') {
+        start.click();
+      } else if (e.key === 'Escape') {
+        reset.click();
+      }
     });
 
   </script>
