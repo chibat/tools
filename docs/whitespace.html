@@ -1,0 +1,33 @@
+<html>
+
+<head>
+  <title>Whitespace Decode - Tools</title>
+  <meta name="viewport" content="width=device-width" />
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>Whitespace Decode</h1>
+  <textarea id="original" autofocus style="width: 100%;" rows="2">aaa\r\nbbb\nccc\tddd</textarea>
+  <button id="button">Decode</button>
+  <br />
+  <br />
+  <pre id="result"></pre>
+  <script type="text/javascript" defer>
+    'use strict';
+    const original = document.getElementById('original');
+    const result = document.getElementById('result');
+    const button = document.getElementById('button');
+    button.addEventListener('click', () => {
+      try {
+        result.textContent = original.value.replaceAll('\\r\\n', '\n').replaceAll('\\n', '\n').replaceAll('\\t', '\t');
+      } catch (e) {
+        result.textContent = 'Parse Error';
+      }
+    });
+
+  </script>
+</body>
+
+</html>
