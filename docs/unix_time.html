@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <meta charset="utf-8"/>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>UUID - Tools</title>
   <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
@@ -17,6 +17,8 @@
   <span id="locale"></span>
   <h2>UTC: date.toUTCString()</h2>
   <span id="utc"></span>
+  <h2>Japanese</h2>
+  <span id="ja"></span>
 
   <script type="text/javascript" defer>
     'use strict';
@@ -24,6 +26,8 @@
       document.getElementById('iso').textContent = date.toISOString();
       document.getElementById('locale').textContent = date.toLocaleString();
       document.getElementById('utc').textContent = date.toUTCString();
+      document.getElementById('ja').textContent = new Intl.DateTimeFormat('ja-JP-u-ca-japanese',
+        { era: "long", year: "numeric" }).format(date);
     }
     const unixTime = document.getElementById('unixTime');
     const now = new Date();
