@@ -1,0 +1,42 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Test tel scheme - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>Test tel scheme</h1>
+  <input id="input" type="text" autofocus style="width: 100%" placeholder="Telephone Number" pattern="^[0-9-]+$" />
+  <div>
+    <a id="tel" href=""></a>
+  </div>
+  <div>
+    <a id="callto" href=""></a>
+  </div>
+
+  <script type="text/javascript" defer>
+    'use strict';
+    const input = document.getElementById("input")
+    const tel = document.getElementById("tel");
+    const callto = document.getElementById("callto");
+    input.addEventListener('input', () => {
+      if (input.value) {
+        tel.textContent = 'tel:' + input.value;
+        tel.setAttribute('href', tel.textContent);
+        callto.textContent = 'callto:' + input.value;
+        callto.setAttribute('href', callto.textContent);
+      } else {
+        tel.textContent = '';
+        tel.setAttribute('href', '');
+        callto.textContent = '';
+        callto.setAttribute('href', '');
+      }
+    });
+  </script>
+</body>
+
+</html>
