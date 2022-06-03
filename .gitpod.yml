@@ -1,7 +1,10 @@
-# Learn more about this file at https://www.gitpod.io/docs/references/gitpod-yml
+
 image:
   file: .gitpod.Dockerfile
 
 #tasks:
 #  - command: |
 #      deno run --allow-net --unstable webserver.ts
+vscode:
+  extensions:
+    - denoland.vscode-deno
