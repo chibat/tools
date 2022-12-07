@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Base64 - Tools</title>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
+</head>
+
+<body>
+  <h1>Base64 for multibyte string</h1>
+  <h2>encode</h2>
+  <input id="btoa_input" type="text" autofocus style="width: 100%" />
+  <input id="btoa_result" readonly style="width: 100%; border: none;" />
+  <span id="btoa_message" style="color: red"></span>
+  <h2>decode</h2>
+  <input id="atob_input" type="text" style="width: 100%" />
+  <input id="atob_result" readonly style="width: 100%; border: none;" />
+  <span id="atob_message" style="color: red"></span>
+
+  <script type="text/javascript" defer>
+    'use strict';
+
+    // 文字列をバイナリに変換
+    // https://developer.mozilla.org/ja/docs/Web/API/btoa#unicode_%E6%96%87%E5%AD%97%E5%88%97
+    function toBinary(string) {
+      const codeUnits = new Uint16Array(string.length);
+      for (let i = 0; i < codeUnits.length; i++) {
+        codeUnits[i] = string.charCodeAt(i);
+      }
+
+      // TypeScript の場合は、`...Array.from(` を追加しないと型エラーになる。。
+      return String.fromCharCode(...new Uint8Array(codeUnits.buffer));
+    }
+
+    // バイナリを文字列に変換
+    // https://developer.mozilla.org/ja/docs/Web/API/btoa#unicode_%E6%96%87%E5%AD%97%E5%88%97
+    function fromBinary(binary) {
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < bytes.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+
+      // TypeScript の場合は、`...Array.from(` を追加しないと型エラーになる。。
+      return String.fromCharCode(...new Uint16Array(bytes.buffer));
+    }
+
+    const ERROR_MESSAGE = "Contains characters that cannot be converted.";
+    const btoaInput = document.getElementById("btoa_input")
+    const btoaMessage = document.getElementById("btoa_message");
+    const btoaResult = document.getElementById("btoa_result");
+    btoaInput.addEventListener('change', () => {
+      btoaMessage.textContent = "";
+      btoaResult.value = "";
+      const input = btoaInput.value;
+      try {
+        btoaResult.value = btoa(toBinary(input));
+      } catch {
+        btoaMessage.textContent = ERROR_MESSAGE;
+      }
+    });
+    const atobInput = document.getElementById("atob_input");
+    const atobMessage = document.getElementById("atob_message");
+    const atobResult = document.getElementById("atob_result");
+    atobInput.addEventListener('change', () => {
+      atobMessage.textContent = "";
+      atobResult.value = "";
+      const input = atobInput.value;
+      try {
+        atobResult.value = fromBinary(atob(input));
+      } catch {
+        atobMessage.textContent = ERROR_MESSAGE;
+      }
+    });
+  </script>
+</body>
+
+</html>

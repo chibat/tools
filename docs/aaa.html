@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <form id="form">
+    <input type="text" name="word" placeholder="Search" autocomplete="off" />
+    <button type="submit">Search</button>
+  </form>
+  <div id="date"></div>
+  <div id="action"></div>
+  <script>
+    const form = document.getElementById('form');
+    const date = document.getElementById('date');
+    const action = document.getElementById('action');
+
+    // 文字列をバイナリに変換
+    // https://developer.mozilla.org/ja/docs/Web/API/btoa#unicode_%E6%96%87%E5%AD%97%E5%88%97
+    function toBinary(string) {
+      const codeUnits = new Uint16Array(string.length);
+      for (let i = 0; i < codeUnits.length; i++) {
+        codeUnits[i] = string.charCodeAt(i);
+      }
+
+      // TypeScript の場合は、`...Array.from(` を追加しないと型エラーになる。。
+      return String.fromCharCode(...new Uint8Array(codeUnits.buffer));
+    }
+
+    // バイナリを文字列に変換
+    // https://developer.mozilla.org/ja/docs/Web/API/btoa#unicode_%E6%96%87%E5%AD%97%E5%88%97
+    function fromBinary(binary) {
+      const bytes = new Uint8Array(binary.length);
+      for (let i = 0; i < bytes.length; i++) {
+        bytes[i] = binary.charCodeAt(i);
+      }
+
+      // TypeScript の場合は、`...Array.from(` を追加しないと型エラーになる。。
+      return String.fromCharCode(...new Uint16Array(bytes.buffer));
+    }
+
+    // サーバにリクエスト
+    function search(pushState) {
+      if (!form.word.value) {
+        return;
+      }
+      // 検索条件を JSON 化
+      const body = JSON.stringify({ word: form.word.value });
+      fetch(location.pathname + '/data.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body,
+      }).then(res => {
+        // とりあえずレスポンスは無視して読み込み日時をページに表示するようにします。
+
+        // 検索条件の JSON -> 文字列をバイナリに変換 -> base64 エンコード -> URL のハッシュに付ける
+        const hash = '#' + btoa(toBinary(body));
+        const now = new Date().toISOString();
+        date.innerText = now;
+        if (pushState) {
+          history.pushState(now, '', hash);
+          action.innerText = 'テキストフィールドの入力値で検索';
+        } else {
+          history.replaceState(now, null, hash);
+          action.innerText = 'URLハッシュの値で検索';
+        }
+      });
+    }
+
+    // URL のハッシュ部分から検索条件を復元
+    function restoreForm() {
+      if (location.hash) {
+        // URL のハッシュ部分を base64 デコード -> バイナリを文字列に変換
+        const decodedHash = fromBinary(atob(location.hash.substring(1)));
+        const formObject = JSON.parse(decodedHash);
+        form.word.value = formObject.word; // 検索条件を画面に反映
+      } else {
+        form.word.value = '';
+      }
+    }
+
+    form.addEventListener("submit", event => {
+      // 検索ボタンをクリックした時に実行される。
+      event.preventDefault();
+      search(true);
+    });
+
+    addEventListener('popstate', event => {
+      // history back した時に実行される。
+      date.innerText = event.state;
+      action.innerText = 'state からページを復元';
+      restoreForm();
+    });
+
+    // 初回読み込みやリロードした時に実行される。
+    restoreForm();
+    search(false);
+
+  </script>
+</body>
+
+</html>
