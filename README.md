@@ -1,5 +1,4 @@
 
 # Tools
 
-https://chiba.dev/tools/
-
+https://chibat.github.io/tools/
