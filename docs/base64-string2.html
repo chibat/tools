@@ -40,7 +40,7 @@
       btoaResult.value = "";
       const input = btoaInput.value;
       try {
-        btoaResult.value = btoa(stringToBase64(input));
+        btoaResult.value = stringToBase64(input);
       } catch {
         btoaMessage.textContent = ERROR_MESSAGE;
       }
@@ -53,7 +53,7 @@
       atobResult.value = "";
       const input = atobInput.value;
       try {
-        atobResult.value = base64ToString(atob(input));
+        atobResult.value = base64ToString(input);
       } catch {
         atobMessage.textContent = ERROR_MESSAGE;
       }
