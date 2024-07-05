@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>Base64 - Tools</title>
+  <title>base64url - Tools</title>
   <link href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css" rel="stylesheet">
   <link rel="shortcut icon" href="https://pages.github.com/favicon.ico" />
 </head>
 
 <body>
-  <h1>Base64 for string v2</h1>
+  <h1>base64url for string v2</h1>
   <h2>encode</h2>
   <input id="btoa_input" type="text" autofocus style="width: 100%" />
   <input id="btoa_result" readonly style="width: 100%; border: none;" />
@@ -22,13 +22,26 @@
   <script type="text/javascript" defer>
     'use strict';
 
+    function encodeBase64url(string) {
+      console.log(string);
+      return btoa(string)
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+    }
+
+    function decodeBase64url(string) {
+      const base64 = string.replace(/-/g, '+').replace(/_/g, '/');
+      return atob(base64);
+    }
+
     const encoder = new TextEncoder();
     const decoder = new TextDecoder();
     function stringToBase64(string) {
-      return btoa(String.fromCharCode(...encoder.encode(string)));
+      return encodeBase64url(String.fromCharCode(...encoder.encode(string)));
     }
     function base64ToString(base64) {
-      return decoder.decode(Uint8Array.from(atob(base64), (x) => x.charCodeAt(0)));
+      return decoder.decode(Uint8Array.from(decodeBase64url(base64), (x) => x.charCodeAt(0)));
     }
 
     const ERROR_MESSAGE = "Contains characters that cannot be converted.";
@@ -40,7 +53,7 @@
       btoaResult.value = "";
       const input = btoaInput.value;
       try {
-        btoaResult.value = btoa(stringToBase64(input));
+        btoaResult.value = stringToBase64(input);
       } catch {
         btoaMessage.textContent = ERROR_MESSAGE;
       }
@@ -53,7 +66,7 @@
       atobResult.value = "";
       const input = atobInput.value;
       try {
-        atobResult.value = base64ToString(atob(input));
+        atobResult.value = base64ToString(input);
       } catch {
         atobMessage.textContent = ERROR_MESSAGE;
       }
